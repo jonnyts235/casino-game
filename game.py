@@ -12,6 +12,7 @@ def casino_game():
 
   def greeting():
     print("Welcome to Jonny's Roulette")
+
   def user_selection():
     while True:
       user_input = input("\nHow much money would you like to add to your wallet?")
@@ -22,6 +23,18 @@ def casino_game():
     else:
       print(f"You've deposited {wallet} into your wallet")
       return wallet
+
+    def choice_of_color(weights):
+      user_choice = input("\nWhat color would you like put bet on?")
+      choice_selection = weights.get(user_choice, False)
+      if choice_selection == False:
+        print("Im sorry that wasn't one of the colours...")
+        continue
+      else:
+        print(f"You picked {choice_selection} no takebacks")
+        return choice_selection[1]
+      
+      def amount_wagered()
 
 
     def roulette_function(weights):
