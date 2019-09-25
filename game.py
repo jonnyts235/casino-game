@@ -1,4 +1,10 @@
 import numpy as np
+
+wallet = 0
+def wagering_conditional():
+  global wallet
+  
+
 def casino_game():
 
   weights = {
@@ -6,64 +12,82 @@ def casino_game():
   'green': 1,
   'black': 18
   }
-  wallet = 0
+
 
 
   def greeting():
     print("Welcome to Jonny's Roulette")
+  greeting()
 
   def user_selection():
     global wallet
-    print("Here are our menu options")
+    print("Here are our wallet options\n")
     user_input = input("Please select from the following wallet choices: \n1: $50\n2: $100\n3: $150\n4: $200\n5: $250\n\nWhat would you like? ")
     if user_input == "1":
       wallet += 50
-      print(f"You currently have ${wallet}")
+      print(f"You currently have ${wallet}\n")
     elif user_input == "2":
       wallet += 100
-      print(f"You currently have ${wallet}")
+      print(f"You currently have ${wallet}\n")
     elif user_input == "3":
       wallet += 150
-      print(f"You currently have ${wallet}")
+      print(f"You currently have ${wallet}\n")
     elif user_input == "4":
       wallet += 200
-      print(f"You currently have ${wallet}")
+      print(f"You currently have ${wallet}\n")
     elif user_input == "5":
       wallet += 250
-      print(f"You currently have ${wallet}")
+      print(f"You currently have ${wallet}\n")
     else: 
-      print("That isnt a valid option, please try again")
+      print("That isnt a valid option, please try again\n")
       user_selection()
     amount_wagered()
 
       
   def amount_wagered():
     global wallet
-    print("How much would you like to wager?")
-    user_input = input("Please select from the following wager choices: \n50: $50\n100: $100\n150: $150\n200: $200\n250: $250\n\nWhat would you like? ")
-    if user_input == "0":
-      wallet -= 50
+    print("How much would you like to wager?\n")
+    user_input = input("Please select from the following wager choices: \n1: $50\n2: $100\n3: $150\n4: $200\n5: $250\n\nWhat would you like? ")
+    while True:
+      if user_input == "1":
+        wallet -= 50
+        if wallet >= 0:
+          print(f"You wagered $50, now your money is on the table\n")
+        else:
+          return amount_wagered()
 
-      print(f"You wagered ${user_input}, now your money is on the table")
-    elif user_input == "1":
-      wallet -= 100
+      elif user_input == "2":
+        wallet -= 100
+        if wallet >= 0:
+          print(f"You wagered $100, now your money is on the table\n")
+        else:
+          return amount_wagered()
 
-      print(f"")
-    elif user_input == "2":
-      wallet -= 150
-      
-      print(f"You wagered ${user_input}, now your money is on the table")
-    elif user_input == "3":
-      wallet -= 200
-      
-      print(f"You wagered ${user_input}, now your money is on the table")
-    elif user_input == "4":
-      wallet -= 250
-      
-      print(f"You wagered ${user_input}, now your money is on the table")
-    else: 
-      print("That isnt a valid option, please try again")
-      amount_wagered()
+      elif user_input == "3":
+        wallet -= 150
+        if wallet >= 0:
+          print(f"You wagered $150, now your money is on the table\n")
+        else:
+          return amount_wagered()
+
+      elif user_input == "4":
+        wallet -= 200
+        if wallet >= 0:
+          print(f"You wagered $200, now your money is on the table\n")
+        else:
+          return amount_wagered()
+
+      elif user_input == "5":
+        wallet -= 250
+        if wallet >= 0:
+          print(f"You wagered $250, now your money is on the table\n")
+        else:
+          return amount_wagered()
+
+      else: 
+        print("That isnt a valid option, please try again\n")
+        amount_wagered()
+
     choice_of_color(weights)
     
 
@@ -95,6 +119,8 @@ def casino_game():
       print(f"CONGRATS!!! You picked {user_choice}, which was the winning color. ")
     else:
       print("Sorry your choice wasn't the right one... You're broke")
-
+  user_selection()
 
 casino_game()
+
+    
